@@ -1,4 +1,10 @@
-# A set of various string helpers.
+# A set of various string helpers
+
+### Install instructions
+Install via pip
+
+    $ pip install stringhelpers
+
 
 ### Quick Usage
 
