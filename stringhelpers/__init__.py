@@ -8,7 +8,7 @@
     :license: MIT, see LICENSE for more details.
 """
 
-__version__ = '1.0'
+__version__ = '1.1'
 
 import re
 import os
@@ -253,7 +253,7 @@ def even(number):
 
 
 def strip_slashes(string):
-    """Returns a copy of `string` where any leading and triling slashes is
+    """Returns a copy of `string` where any leading and trailing slashes is
     removed.
 
     :param string: string to remove leading and trailing slashes from.
