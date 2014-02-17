@@ -52,5 +52,5 @@ Install via pip
     True
     >>> if even(2): print(True)
     True
-    >>> print(trim_slashes('/foo/and/bar//'))
+    >>> print(strip_slashes('/foo/and/bar//'))
     foo/and/bar
