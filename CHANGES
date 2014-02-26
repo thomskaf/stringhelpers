@@ -1,6 +1,13 @@
 stringhelpers Changelog
 =======================
 
+Version 1.2
+-----------
+Improves the `upcase_first_letter` function.
+- Any non-alphanumeric chars and spaces will now not be treated as the first letter,
+  which stopped the search after the first letter that should be capitalized.
+
+
 Version 1.1
 -----------
 Fixes small typos.
