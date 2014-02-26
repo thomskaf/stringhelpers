@@ -8,7 +8,7 @@
     :license: MIT, see LICENSE for more details.
 """
 
-__version__ = '1.1'
+__version__ = '1.2'
 
 import re
 import os
@@ -39,7 +39,9 @@ def upcase_first_letter(string):
 
     :param :string: string to capitalize first letter of.
     """
-    return string[0].upper() + string[1:]
+    alpha = re.compile(r"[^\W\s\d]", re.UNICODE)
+    letter = alpha.search(string).group()
+    return string.replace(letter, letter.upper(), 1)
 
 
 def reverse(string):
