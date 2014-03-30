@@ -45,11 +45,14 @@ def upcase_first_letter(string):
 
 
 def reverse(string):
-    """Returns a copy of `string` in reversed order.
+    """Returns a copy of `string` reversed.
 
-    :param string: string or list to reverse.
+    :param string: string to reverse.
     """
-    return string[::-1]
+    if isinstance(string, str) or isinstance(string, unicode):
+        return ''.join([string[i] for i in range(len(string)-1, -1, -1)])
+    else:
+        return string
 
 
 def reverse_order(string):
