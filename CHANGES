@@ -1,6 +1,18 @@
 stringhelpers Changelog
 =======================
 
+Version 1.3
+-----------
+Improves the `def reverse()` function.
+- Will return a copy of `string` with all the words in a reversed order as
+  long as the given `string` is a str or unicode object - otherwise it will be
+  returned unchanged.
+
+Improves the `reverse_order()` function.
+- Will now also reverse the order of items in lists and dictionaries,
+  not only the order of words in strings.
+
+
 Version 1.2
 -----------
 Improves the `upcase_first_letter` function.
