@@ -1,6 +1,11 @@
 stringhelpers Changelog
 =======================
 
+Version 1.2.1
+-------------
+Small improvements of the `reverse_order` and `inverse` functions.
+
+
 Version 1.2
 -----------
 Improves the `upcase_first_letter` function.

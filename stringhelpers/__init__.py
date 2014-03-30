@@ -8,7 +8,7 @@
     :license: MIT, see LICENSE for more details.
 """
 
-__version__ = '1.2'
+__version__ = '1.2.1'
 
 import re
 import os
@@ -52,18 +52,24 @@ def reverse(string):
     if isinstance(string, str) or isinstance(string, unicode):
         return ''.join([string[i] for i in range(len(string)-1, -1, -1)])
     else:
-        return string
+        return string[::-1]
 
 
-def reverse_order(string):
-    """Returns a copy of `string` with all the words in a reversed order.
+def reverse_order(item):
+    """Returns a copy of `item` with all the elements in a reverse order.
+    If `item` is a single string, the words will be separated by whitespaces.
 
-    :param string: string to reverse the order of words in.
+    :param string: string or list where the order of elements should be
+                   reversed in.
     """
-    if isinstance(string, str) or isinstance(string, unicode):
-        return ' '.join([word[::-1] for word in string.split()])[::-1]
+    if type(item) == type(u'str') or type(item) == type('str'):
+        return ' '.join([word[::-1] for word in item.split()])[::-1]
+    if isinstance(item, list):
+        return list(reversed(item))
+    elif isinstance(item, tuple):
+        return tuple(reversed(item))
     else:
-        return False
+        return item
 
 
 def count_items(string):
