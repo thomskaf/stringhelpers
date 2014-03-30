@@ -55,15 +55,21 @@ def reverse(string):
         return string
 
 
-def reverse_order(string):
-    """Returns a copy of `string` with all the words in a reversed order.
+def reverse_order(item):
+    """Returns a copy of `item` with all the elements in a reverse order.
+    If `item` is a single string, the words will be separated by whitespaces.
 
-    :param string: string to reverse the order of words in.
+    :param string: string or list where the order of elements should be
+                   reversed in.
     """
-    if isinstance(string, str) or isinstance(string, unicode):
-        return ' '.join([word[::-1] for word in string.split()])[::-1]
+    if type(item) == type(u'str') or type(item) == type('str'):
+        return ' '.join([word[::-1] for word in item.split()])[::-1]
+    if isinstance(item, list):
+        return list(reversed(item))
+    elif isinstance(item, tuple):
+        return tuple(reversed(item))
     else:
-        return False
+        return item
 
 
 def count_items(string):
