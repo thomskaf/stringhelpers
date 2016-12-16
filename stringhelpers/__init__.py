@@ -240,14 +240,14 @@ def count(item, string, case_sensitive=False):
 def odd(number):
     """Returns `True` if `number` is odd. `False` otherwise.
 
-    :param number: number to check if it is odd.
+    :param number: number to check if is odd.
     """
     try:
         int(number)
     except:
         return False
-    else:
-        return int(number) & 0x1 == 1
+
+    return int(number) & 0x1 == 1
 
 
 def even(number):
@@ -259,8 +259,8 @@ def even(number):
         int(number)
     except:
         return False
-    else:
-        return int(number) % 2 == 0
+
+    return int(number) % 2 == 0
 
 
 def strip_slashes(string):
