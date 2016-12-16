@@ -1,6 +1,18 @@
 stringhelpers Changelog
 =======================
 
+Version 1.3
+-----------
+New functions
+- `sort`
+- `common_subsequences`
+- `longest_common_subsequence`
+- `shortest_common_subsequence`
+
+Small refactoring of `odd()` and `even()`.
+
+Adds `test_stringhelpers.py`
+
 Version 1.2.1
 -------------
 Small improvements of the `reverse_order` and `inverse` functions.

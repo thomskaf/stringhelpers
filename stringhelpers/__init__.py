@@ -8,7 +8,7 @@
     :license: MIT, see LICENSE for more details.
 """
 
-__version__ = '1.2.1'
+__version__ = '1.3'
 
 import re
 import os
