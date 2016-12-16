@@ -270,3 +270,55 @@ def strip_slashes(string):
     :param string: string to remove leading and trailing slashes from.
     """
     return string.rstrip('/',).lstrip('/')
+
+
+def sort(item, order=None):
+    """Sort the given `item` by any order defined in `order` - either
+    "ascending" (default) or "descending". The `item` will be sorted as well as
+    possible, no matter what the type of the given `item` is.
+
+    .. versionadded:: 1.3
+
+    :param item: item to sort.
+    :param order: the order in which the item should be sorted in.
+    """
+    if order == "ascending":
+        reverse = False
+    elif order == "descending":
+        reverse = True
+    else:
+        reverse = None
+
+    if isinstance(item, (dict)):
+        ordered_result = sorted(list(item.items()), key=lambda key: key[0],
+                                reverse=bool(reverse))
+        return ordered_result
+    elif isinstance(item, str):
+        if len(item.split()) == 1:
+            # Seems that `item` not containing any spaces; simply just sort the
+            # order of the characters.
+            return ''.join(sorted(item, reverse=bool(reverse)))
+        return ' '.join(sorted(item.split(" "), reverse=bool(reverse)))
+
+    elif isinstance(item, (list, tuple)):
+        if order in ("ascending", None):
+            reverse = False
+        else:
+            reverse = True
+        try:
+            return sorted(item, reverse=reverse)
+        except TypeError:
+            # `item` contains not only strings.
+            return sorted(item, key=lambda x: str(x), reverse=reverse)
+    elif isinstance(item, (int, float)):
+        if order == "ascending":
+            reverse = False
+        elif order == "descending":
+            reverse = True
+        else:
+            reverse = None
+        if isinstance(item, int):
+            return int(''.join(sorted(str(item), reverse=bool(reverse))))
+        elif isinstance(item, float):
+            return float('.'.join(sorted(str(item).split('.'),
+                         reverse=bool(reverse))))
