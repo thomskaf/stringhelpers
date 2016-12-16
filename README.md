@@ -54,3 +54,11 @@ Install via pip
     True
     >>> print(strip_slashes('/foo/and/bar//'))
     foo/and/bar
+    >>> print(sort(["Banana", "Orange", "Apple", "Mango"], order="descending"))
+    ['Orange', 'Mango', 'Banana', 'Apple']
+    >>> print(common_subsequences({"Lorem": "dummy", "Ipsum": "Dummy text"}, {"Lorem": "dummy", "Ipsum": "Dummy"}))
+    {'Lorem': 'dummy'}
+    >>> print(longest_common_subsequence("Python is named after Monty Python", "What is Python Used For ?"))
+    Python
+    >>> print(shortest_common_subsequence("Python is named after Monty Python", "What is Python Used For ?"))
+    is
