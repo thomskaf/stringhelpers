@@ -326,25 +326,43 @@ def sort(item, order=None):
                          reverse=bool(reverse))))
 
 
-def common_subsequences(object1, object2):
-    """Return all common subsequences found in `object1` and `object2`. Hence
-    of lists and / or strings. If only one of the given objects is a
-    dictionary, all the keys of that object will then be treated as a list,
-    while any key-values is ignored.
+def common_sub(object1, object2, sequence=None):
+    """Returns a list of all the common subsequences found in `object1` and
+    `object2`. Hence of lists and / or strings.
+    If only one of the given objects is a dictionary, all the keys of that
+    object will then be treated as a list, while any key-values is ignored,
+    otherwise both the key and the value need to match.
 
-    .. versionadded:: 1.3
+    If the `sequence` is set to either `shortest` or` longest`,
+    will the corresponding common subsequence be returned.
 
     :param object1: the first string, list, or tuple to search.
     :param object2: the seccond string, list, or tuple to search.
+    :param sequence: what subsequence to return, `shortest` or `longest`. ???
     """
-    try:
-        return dict(set(object1.items()) & set(object2.items()))
-    except AttributeError:
-        if isinstance(object1, str):
-            object1 = object1.split()
+    if isinstance(object1, ("".__class__, u"".__class__)):
+        # print("%s is basestirng" % object1)
+        object1 = object1.split()
+    if isinstance(object2, ("".__class__, u"".__class__)):
+        object2 = object2.split()
 
-        if isinstance(object2, str):
-            object2 = object2.split()
+    if sequence == "shortest":
+        for item in sorted(object1, key=lambda x: len(str(x)), reverse=False):
+            if item in object2:
+                return item
+    elif sequence == "longest":
+        for item in sorted(object1, key=lambda x: len(str(x)), reverse=True):
+            if item in object2:
+                return item
+    else:
+        try:
+            return dict(set(object1.items()) & set(object2.items()))
+        except:
+            try:
+                object1 = object1.split()
+                object2 = object2.split()
+            except:
+                pass
 
     common_subsequences = []
     for item in object1:
@@ -352,55 +370,3 @@ def common_subsequences(object1, object2):
             common_subsequences.append(item)
 
     return common_subsequences if common_subsequences else None
-
-
-def longest_common_subsequence(object1, object2):
-    """Returns the first, and longest, common subsequence found in `object1`
-    and `object2`. If no common subsequence is found, `None` is
-    returned. Any white spaces is not treated as a valid subsequence.
-
-    .. versionadded:: 1.3
-
-    :param object1: the first string, list, or tuple to search.
-    :param object2: the seccond string, list, or tuple to search.
-    """
-    try:
-        if max(object1.split(), key=len) == max(object2.split(), key=len):
-            return max(object1.split(), key=len)
-    except AttributeError:
-        pass
-    else:
-        object1 = object1.split()
-        object2 = object2.split()
-
-    for item in sorted(object1, key=lambda x: len(str(x)), reverse=True):
-        if item in object2:
-            return item
-
-    return None
-
-
-def shortest_common_subsequence(object1, object2):
-    """Returns the first, and shortest, common subsequence found in `object1`
-    and `object2`. If no common subsequence is found, `None` is
-    returned. Any white spaces is not  treated as a valid subsequence.
-
-    .. versionadded:: 1.3
-
-    :param object1: the first string, list, or tuple to search.
-    :param object2: the seccond string, list, or tuple to search.
-    """
-    try:
-        if min(object1.split(), key=len) == min(object2.split(), key=len):
-            return min(object1.split(), key=len)
-    except AttributeError:
-        pass
-    else:
-        object1 = object1.split()
-        object2 = object2.split()
-
-    for item in sorted(object1, key=lambda x: len(str(x)), reverse=False):
-        if item in object2:
-            return item
-
-    return None

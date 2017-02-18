@@ -124,25 +124,6 @@ class Test(unittest.TestCase):
         self.assertEqual(sort("abc,bca"), ",aabbcc")
         self.assertEqual(sort("4213"), "1234")
 
-    def test_common_subsequences(self):
-        lipsum1 = "Lorem Ipsum is simply dummy text of the printing and "\
-                  "typesetting industry."
-        lipsum2 = "Lorem Ipsum has been the industry's standard dummy "\
-                  "text ever since the 1500s."
-        self.assertEqual(common_subsequences(lipsum1, lipsum2),
-                         ["Lorem", "Ipsum", "dummy", "text", "the"])
-        self.assertEqual(common_subsequences(lipsum1, "dummy text it is"),
-                         ["is", "dummy", "text"])
-        self.assertEqual(common_subsequences(("Lorem", "Ipsum", "dummy",
-                                              "is", "dummy"),
-                                             lipsum1.split()),
-                         ["Lorem", "Ipsum", "dummy", "is", "dummy"])
-        self.assertEqual(common_subsequences("asdf", "fdsa"), None)
-        self.assertEqual(common_subsequences({"Lorem": "dummy",
-                         "Ipsum": "Dummy text"}, {"Lorem": "dummy",
-                                                  "Ipsum": "Dummy"}),
-                         {'Lorem': 'dummy'})
-
     sequences = [
             {"sequence1": "foo !!!!!  bar",
              "sequence2": "bar !!!!! foo",
@@ -195,41 +176,51 @@ class Test(unittest.TestCase):
              "sequence2": {"ordering": "undefined", "hello":
                            "Vyrde helsing", "goodbye": "later"},
              "longest_result": "goodbye", "shortest_result": "hello"},
+            {"sequence1": {"hello": "Vyrde helsing", "goodbye": "see ya",
+                           "foo": "bar"},
+             "sequence2": ["hello", "goodbye", "foo"],
+             "longest_result": "goodbye", "shortest_result": "foo"},
     ]
 
-    def test_longest_common_subsequence(self):
+    def test_common_sub(self):
+        lipsum1 = "Lorem Ipsum is simply dummy text of the printing and "\
+                  "typesetting industry."
+        lipsum2 = "Lorem Ipsum has been the industry's standard dummy "\
+                  "text ever since the 1500s."
+        self.assertEqual(common_sub(lipsum1, lipsum2),
+                         ["Lorem", "Ipsum", "dummy", "text", "the"])
+        self.assertEqual(common_sub(lipsum1, "dummy text it is"),
+                         ["is", "dummy", "text"])
+        self.assertEqual(common_sub(("Lorem", "Ipsum", "dummy",
+                                              "is", "dummy"), lipsum1.split()),
+                         ["Lorem", "Ipsum", "dummy", "is", "dummy"])
+        self.assertEqual(common_sub("asdf", "fdsa"), None)
+        self.assertEqual(common_sub({"Lorem": "dummy",
+                         "Ipsum": "Dummy text"}, {"Lorem": "dummy",
+                                                  "Ipsum": "Dummy"}),
+                         {'Lorem': 'dummy'})
+        # `longest` and `shortest`
         for sequence in self.sequences:
 
-            longest_sub = longest_common_subsequence(sequence["sequence1"],
-                                                     sequence["sequence2"])
+            longest_sub = common_sub(sequence["sequence1"],
+                                     sequence["sequence2"], "longest")
+            shortest_sub = common_sub(sequence["sequence1"],
+                                      sequence["sequence2"], "shortest")
 
             if not getattr(unittest.TestCase, "assertIsInstance", None):
                 # Py >= 2.6
                 def assertIsInstance(a, b):
                     self.assertTrue(isinstance(a, b))
-                assertIsInstance(longest_sub,
-                                 type(sequence["longest_result"]))
-            else:
-                # Py <= 2.7 / 3
-                self.assertIsInstance(longest_sub,
-                                      type(sequence["longest_result"]))
-            self.assertEqual(longest_sub, sequence["longest_result"])
-
-    def test_shortest_common_subsequence(self):
-        for sequence in self.sequences:
-            shortest_sub = shortest_common_subsequence(
-                sequence["sequence1"], sequence["sequence2"])
-
-            if not getattr(unittest.TestCase, "assertIsInstance", None):
-                # Py >= 2.6
-                def assertIsInstance(a, b):
-                    self.assertTrue(isinstance(a, b))
+                assertIsInstance(longest_sub, type(sequence["longest_result"]))
                 assertIsInstance(shortest_sub,
                                  type(sequence["shortest_result"]))
             else:
                 # Py <= 2.7 / 3
+                self.assertIsInstance(longest_sub,
+                                      type(sequence["longest_result"]))
                 self.assertIsInstance(shortest_sub,
                                       type(sequence["shortest_result"]))
+            self.assertEqual(longest_sub, sequence["longest_result"])
             self.assertEqual(shortest_sub,
                              sequence["shortest_result"])
 
