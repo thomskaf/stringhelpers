@@ -56,9 +56,9 @@ Install via pip
     foo/and/bar
     >>> print(sort(["Banana", "Orange", "Apple", "Mango"], order="descending"))
     ['Orange', 'Mango', 'Banana', 'Apple']
-    >>> print(common_subsequences({"Lorem": "dummy", "Ipsum": "Dummy text"}, {"Lorem": "dummy", "Ipsum": "Dummy"}))
-    {'Lorem': 'dummy'}
-    >>> print(longest_common_subsequence("Python is named after Monty Python", "What is Python Used For ?"))
-    Python
-    >>> print(shortest_common_subsequence("Python is named after Monty Python", "What is Python Used For ?"))
+    >>> print(common_sub("Python is named after Monty Python", "What is Python Used For ?"))
+    ['Python', 'is', 'Python']
+    >>> print(common_sub("Python is named after Monty Python", "What is Python Used For ?", sequence="shortest"))
     is
+    >>> print(common_sub("Python is named after Monty Python", "What is Python Used For ?", sequence="longest"))
+    Python
