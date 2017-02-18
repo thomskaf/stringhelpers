@@ -62,7 +62,13 @@ def reverse_order(item):
     :param string: string or list where the order of elements should be
                    reversed in.
     """
-    if type(item) == type(u'str') or type(item) == type('str'):
+
+    try:
+        basestring  # attempt to evaluate basestring
+    except NameError:
+        basestring = str
+
+    if isinstance(item, basestring):
         return ' '.join([word[::-1] for word in item.split()])[::-1]
     if isinstance(item, list):
         return list(reversed(item))
