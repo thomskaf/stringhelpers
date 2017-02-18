@@ -243,11 +243,9 @@ def odd(number):
     :param number: number to check if is odd.
     """
     try:
-        int(number)
+        return int(number) & 0x1 == 1
     except:
         return False
-
-    return int(number) & 0x1 == 1
 
 
 def even(number):
@@ -256,11 +254,9 @@ def even(number):
     :param number: number to check if is even.
     """
     try:
-        int(number)
+        return int(number) % 2 == 0
     except:
         return False
-
-    return int(number) % 2 == 0
 
 
 def strip_slashes(string):
