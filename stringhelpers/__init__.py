@@ -279,8 +279,6 @@ def sort(item, order=None):
     "ascending" (default) or "descending". The `item` will be sorted as well as
     possible, no matter what the type of the given `item` is.
 
-    .. versionadded:: 1.3
-
     :param item: item to sort.
     :param order: the order in which the item should be sorted in.
     """
