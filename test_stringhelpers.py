@@ -41,9 +41,6 @@ class Test(unittest.TestCase):
                          "A Lizard That S...")
 
     def test_random_string(self):
-        # self.assertTrue(random_string()) zJEoBf
-        # self.assertEqual(random_string(password_safe=True)) I9ZuwP
-        # length=6
         self.assertTrue(len(self.random_string) == 6 and
                         len(self.random_string_password_safe) == 12)
         r = "^[aA1bB2cC3dD4eE5fF6gG7hH8iI9jJkKlLmMnNpPqQrRsStTuUvVwWxXyYzZ]*$"
