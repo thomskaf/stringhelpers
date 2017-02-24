@@ -312,12 +312,6 @@ def sort(item, order=None):
             # `item` contains not only strings.
             return sorted(item, key=lambda x: str(x), reverse=reverse)
     elif isinstance(item, (int, float)):
-        if order == "ascending":
-            reverse = False
-        elif order == "descending":
-            reverse = True
-        else:
-            reverse = None
         if isinstance(item, int):
             return int(''.join(sorted(str(item), reverse=bool(reverse))))
         elif isinstance(item, float):
