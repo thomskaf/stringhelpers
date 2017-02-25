@@ -376,3 +376,30 @@ def is_iterable(object):
     except TypeError:
         return False
     return True
+
+
+def substr(object, start, end=None):
+    """Return the sub string from given `object`, which is found between the
+    positions defined in the `start` and `end` parameters.
+    If only `start` is given, the sub string will start at the beginning of
+    the `object`, and stop at the position which then is specified in `start`,
+    where both `0` and `1` then would be the first item/character.
+    If `object` is a list or tuple, `0` would return the first item of that
+    object as a string, whilst `1` then would return the item as a asscoiated
+    item of the object.
+    If the type of `object` is of a `int`, None is returned.
+
+    :param object: object to get the substring of.
+    :param start: the position to start the substring from.
+    :param end: the position to stop the substring extraction.
+    """
+    try:
+        if not end:
+            if start == 0:
+                return object[start]
+            else:
+                return object[0:start]
+        else:
+            return object[start:end+len(object)+1]
+    except TypeError:
+        return None
