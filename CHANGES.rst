@@ -3,6 +3,17 @@
 stringhelpers Changelog
 =======================
 
+Varsion 2.1 - Feb 25, 2017
+--------------------------
+New functions
+
+* `is_iterable()`
+*  `substr()`
+
+Reformatting the docstrings so it uses action ("Return") words, instead of description ("Returns") words.
+Rename and convert CHANGES to CHANGES.rst and use reStructuredText.
+Remove some unnecessary and redundant code in `sort()`.
+
 Version 2.0 - Feb 18, 2017
 --------------------------
 Refactor of `common_subsequence()`, `longest_common_subsequence()` and `shortest_common_subsequence()`
