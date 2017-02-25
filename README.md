@@ -62,3 +62,9 @@ Install via pip
     is
     >>> print(common_sub("Python is named after Monty Python", "What is Python Used For ?", sequence="longest"))
     Python
+    >>> print(is_iterable(["foo", "bar"]))
+    True
+    >>> print(is_iterable(1234))
+    False
+    >>> substr("asdfg", 1, 2)
+    "sdf"
