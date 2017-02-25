@@ -363,3 +363,16 @@ def common_sub(object1, object2, sequence=None):
             common_subsequences.append(item)
 
     return common_subsequences if common_subsequences else None
+
+
+def is_iterable(object):
+    """Return `True` or `False` whether or not the given `object` is capable
+    of being iterated or not.
+
+    :param: object: obejct to determine whether is iterable or not.
+    """
+    try:
+        iter(object)
+    except TypeError:
+        return False
+    return True
