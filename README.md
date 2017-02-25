@@ -10,55 +10,61 @@ Install via pip
 
     >>> from stringhelpers import *
 
-    >>> print(upcase('down here'))
+    >>> upcase('down here')
     DOWN HERE
-    >>> print(downcase('UP HERE'))
+    >>> downcase('UP HERE')
     up here
-    >>> print(upcase_first_letter('lorem iPsum'))
+    >>> upcase_first_letter('lorem iPsum')
     Lorem iPsum
-    >>> print(reverse(u'esrever'))
+    >>> reverse(u'esrever')
     reverse
-    >>> print(reverse_order('one two three'))
+    >>> reverse_order('one two three')
     three two one
-    >>> print(count_items('Now or never'))
+    >>> count_items('Now or never')
     3
-    >>> print(camelize('a lizard that slithers'))
+    >>> camelize('a lizard that slithers')
     A Lizard That Slithers
-    >>> print(list_to_string(['Apple', 'Microsoft', 'Sony']))
+    >>> list_to_string(['Apple', 'Microsoft', 'Sony'])
     Apple, Microsoft, Sony
-    >>> print(truncate('A Mystery Easy to Take for Granted', length=17))
+    >>> truncate('A Mystery Easy to Take for Granted', length=17)
     A Mystery Easy to...
-    >>> print(random_string())
+    >>> random_string()
     zJEoBf
-    >>> print(random_string(password_safe=True))
+    >>> random_string(password_safe=True)
     I9ZuwP
-    >>> print(dasherize('singing_in_the rain'))
+    >>> dasherize('singing_in_the rain')
     singing-in-the-rain
-    >>> print(humanize('summer_08-pictures.tar.gz'))
+    >>> humanize('summer_08-pictures.tar.gz')
     summer 08 pictures
-    >>> print(flatten(['one', ['one', ['two', 'three']], 'three'], remove_duplicates=True))
+    >>> flatten(['one', ['one', ['two', 'three']], 'three'], remove_duplicates=True)
     ['one', 'two', 'three']
-    >>> print(in_list('one', ['one', 'two']))
+    >>> in_list('one', ['one', 'two'])
     one
-    >>> print(in_list('one', ['one', ['one'], 'two', 'one' ]))
+    >>> in_list('one', ['one', ['one'], 'two', 'one' ])
     ['one', 'one', 'one']
-    >>> print(ireplace('w3scHoolS', 'Apple', "Visit W3Schools"))
+    >>> ireplace('w3scHoolS', 'Apple', "Visit W3Schools")
     Visit Apple
-    >>> print(count("but", "But what about the BUT ?",))
+    >>> count("but", "But what about the BUT ?")
     2
-    >>> print(count("But", "But what about the BUT ?", case_sensitive=True))
+    >>> count("But", "But what about the BUT ?", case_sensitive=True)
     1
-    >>> if odd(1): print(True)
+    >>> if odd(1): True
     True
-    >>> if even(2): print(True)
+    >>> if even(2): True
     True
-    >>> print(strip_slashes('/foo/and/bar//'))
+    >>> strip_slashes('/foo/and/bar//')
     foo/and/bar
-    >>> print(sort(["Banana", "Orange", "Apple", "Mango"], order="descending"))
+    >>> sort(["Banana", "Orange", "Apple", "Mango"], order="descending")
     ['Orange', 'Mango', 'Banana', 'Apple']
-    >>> print(common_sub("Python is named after Monty Python", "What is Python Used For ?"))
+    >>> common_sub("Python is named after Monty Python", "What is Python Used For ?")
     ['Python', 'is', 'Python']
-    >>> print(common_sub("Python is named after Monty Python", "What is Python Used For ?", sequence="shortest"))
+    >>> common_sub("Python is named after Monty Python", "What is Python Used For ?", sequence="shortest")
     is
-    >>> print(common_sub("Python is named after Monty Python", "What is Python Used For ?", sequence="longest"))
+    >>> common_sub("Python is named after Monty Python", "What is Python Used For ?", sequence="longest")
     Python
+    >>> is_iterable(["foo", "bar"])
+    True
+    >>> is_iterable(1234)
+    False
+    >>> substr("asdfg", 1, 2)
+    "sdf"
