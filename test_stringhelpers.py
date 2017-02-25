@@ -221,6 +221,19 @@ class Test(unittest.TestCase):
             self.assertEqual(shortest_sub,
                              sequence["shortest_result"])
 
+    def test_is_iterable(self):
+        class Test:
+            def __iter__(self): return ["foo", "bar"]
+
+            def __init__(self): return self
+
+        def test(): return [1, 2, 3]
+
+        for i in ["stringhelpers", ["a", "b", "c"], ("foo", "bar")]:
+            self.assertTrue(is_iterable(i))
+
+        for i in [1234, Test, test]:
+            self.assertFalse(is_iterable(i))
 
 if __name__ == "__main__":
     unittest.main()
