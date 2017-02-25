@@ -235,5 +235,24 @@ class Test(unittest.TestCase):
         for i in [1234, Test, test]:
             self.assertFalse(is_iterable(i))
 
+    def test_substr(self):
+        self.assertEqual(substr(["One", "To", "Three"], 0, 3),
+                         ["One", "To", "Three"])
+        self.assertEqual(substr(("One", "To", "Three"), 0, 3),
+                         ("One", "To", "Three"))
+
+        self.assertEqual(substr(["One", "To", "Three"], 0), "One")
+        self.assertEqual(substr(["One", "To", "Three"], 1), ["One"])
+
+        self.assertEqual(substr("asdf", 0), "a")
+        self.assertEqual(substr("asdf", 1), "a")
+        self.assertEqual(substr("asdf", 2), "as")
+        self.assertEqual(substr("asdf", 1, 2), "sdf")
+        self.assertEqual(substr("asdf", 0, 2), "asdf")
+
+        self.assertEqual(substr("asdf", 1.1), None)
+        self.assertEqual(substr("asdf", 1, 2.1), None)
+
+
 if __name__ == "__main__":
     unittest.main()
